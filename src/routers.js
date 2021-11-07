@@ -1,14 +1,14 @@
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import Vue from "vue";
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
 //Pages
 import Home from "./pages/Home";
-import Notify from "./pages/Notify";
+import NotifyPage from "./pages/NotifyPage";
 
-export default new Router({
-  routes: [
+
+ const routes = [
     {
       path: '/',
       name: 'home',
@@ -17,7 +17,15 @@ export default new Router({
     {
       path: '/notify',
       name: 'notify',
-      component: Notify
+      component: NotifyPage
     }
   ]
+
+
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
 })
+
+export default router
