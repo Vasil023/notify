@@ -6,7 +6,10 @@
         <p>Notify App</p>
       </div>
       <div class="notify__content">
+          <!--preloader-->
+        <preloader v-if="loading" :width="90" :height="90" />
         <notify
+           v-if="!loading"
            :messages="messages"
         />
       </div>
@@ -17,12 +20,15 @@
 
 <script>
 import notify from '../components/Notify'
+//UI
+import preloader from '../components/UI/Preloader'
 export default {
   name: "Notify",
   // eslint-disable-next-line vue/no-unused-components
-  components: { notify },
+  components: { notify, preloader },
   data () {
     return {
+      loading: true,
       messages: [
         {title: 'message 1'},
         {title: 'message 2'},
