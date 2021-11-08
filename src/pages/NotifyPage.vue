@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import notify from '../components/Notify'
 //UI
 import preloader from '../components/UI/Preloader'
@@ -28,15 +29,16 @@ export default {
   components: { notify, preloader },
   data () {
     return {
-      loading: true,
-      messages: [
-        {title: 'message 1'},
-        {title: 'message 2'},
-        {title: 'message 3'},
-        {title: 'message 4'},
-        {title: 'message 5'},
-      ]
+      loading: false,
+      messages: []
     }
+  },
+  mounted() {
+    axios
+      .get('https://tocode.ru/static/_secret/courses/1/notifyApi.php')
+      .then(response => {
+        this.messages = response.data.notify
+      })
   }
 }
 </script>
