@@ -19,7 +19,8 @@ export default {
   },
   methods: {
     loadMore () {
-
+      this.$store.dispatch('loadMessages')
+      .catch(err => console.log(err))
     }
   }
 }
